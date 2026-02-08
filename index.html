@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Dla Niunielli od Miśka ❤️</title>
+    <style>
+        body { 
+            margin: 0; padding: 0; background-color: #ffebee;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; min-height: 100vh;
+            overflow: hidden; position: relative;
+        }
+
+        /* Ściana wyznań w tle */
+        .bg-text {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; color: #c2185b; font-size: 16px; line-height: 1.8;
+            font-weight: 800; user-select: none; pointer-events: none;
+            text-align: justify; padding: 10px; opacity: 0.6;
+            text-transform: uppercase;
+        }
+
+        .container { 
+            background: white; padding: 40px; border-radius: 30px; 
+            width: 90%; max-width: 500px;
+            box-shadow: 0 30px 70px rgba(136, 14, 79, 0.5); 
+            position: relative; z-index: 10; text-align: center;
+            border: 4px solid #c2185b;
+        }
+
+        h1 { color: #880e4f; font-size: 22px; margin-bottom: 30px; line-height: 1.4; min-height: 100px; font-weight: 900; }
+        .buttons { display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 250px; }
+        
+        #tak { 
+            background-color: #4caf50; color: white; border: none; padding: 15px 30px; 
+            font-size: 20px; border-radius: 50px; cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3); transition: all 0.2s ease; font-weight: bold;
+        }
+        
+        #nie { 
+            background-color: #f44336; color: white; border: none; padding: 15px 30px; 
+            font-size: 20px; border-radius: 50px; cursor: pointer; font-weight: bold;
+        }
+
+        img#mainGif { width: 250px; height: 250px; object-fit: contain; margin-bottom: 20px; border-radius: 15px; }
+        
+        #footer { 
+            position: relative; z-index: 10; margin-top: 20px; font-size: 13px; color: #880e4f; 
+            font-weight: bold; background: rgba(255,255,255,0.95); padding: 10px 20px; border-radius: 20px; border: 2px solid #c2185b;
+        }
+
+        #subtext { font-size: 18px; color: #880e4f; margin-top: 20px; display: none; font-weight: 900; }
+
+        .falling-bubu {
+            position: fixed; top: -100px; z-index: 100;
+            width: 70px; height: 70px; pointer-events: none;
+            animation: fall linear forwards;
+        }
+        @keyframes fall { to { transform: translateY(115vh) rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div class="bg-text" id="wallOfLove"></div>
+
+    <div class="container">
+        <img id="mainGif" src="start.gif" alt="Bubu i Dudu">
+        <h1 id="question">Patrycjo, skarbie najdroższy. Czy chciałabyś zostać moją tegoroczną walentynką?</h1>
+        
+        <div class="buttons">
+            <button id="tak">TAK!</button>
+            <button id="nie">NIE</button>
+        </div>
+        <div id="subtext">Poproszę o dodatkową wiadomość, w celu potwierdzenia romantycznej i chillowej randki 14 lutego. 💍💗</div>
+    </div>
+
+    <div id="footer">P.S. Co słodkiego sobie Panienka życzy? 👑</div>
+
+<script>
+    const reasons = "Kocham w Tobie Twoje lśniące oczy 👀 Kocham w Tobie Twój promienny uśmiech 😁 Kocham w Tobie Twoje aksamitne usta 💋 Kocham w Tobie Twoje delikatne dłonie 🤝 Kocham w Tobie Twoje piękne włosy 💇‍♀️ Kocham w Tobie Twój wyjątkowy zapach 🌸 Kocham w Tobie Twój uroczy głos 🎶 Kocham w Tobie Twoją idealną sylwetkę ⏳ Kocham w Tobie to, jak się poruszasz 💃 Kocham w Tobie Twój styl ubierania się 👗 Kocham w Tobie każdą Twoją minę 🙉 Kocham w Tobie Twój hipnotyzujący wzrok ✨ Kocham w Tobie Twoją gładką skórę ✨ Kocham w Tobie to, jak wyglądasz rano po przebudzeniu ☀️ Kocham w Tobie Twój blask, który od Ciebie bije 🔥 Kocham w Tobie Twoje drobne gesty 🤙 Kocham w Tobie Twój profil 👸 Kocham w Tobie to, jak marszczysz nos, gdy się śmiejesz 👃 Kocham w Tobie Twój wzrost, idealny by Cię przytulić 🫂 Kocham w Tobie każdy detal Twojej twarzy 💎 Kocham w Tobie to, jak pięknie wyglądasz w każdej sytuacji 💍 Kocham w Tobie Twoje długie rzęsy 👁️ Kocham w Tobie Twój uroczy dołek w policzku 😊 Kocham w Tobie Twoje zadbane paznokcie 💅 Kocham w Tobie linię Twoich obojczyków 🐚 Kocham w Tobie to, jak układasz usta do pocałunku 😚 Kocham w Tobie Twój naturalny wdzięk 🌿 Kocham w Tobie to, jak lśnisz w świetle słońca ☀️ Kocham w Tobie Twoje zgrabne nogi 👠 Kocham w Tobie sposób, w jaki poprawiasz włosy 💁‍♀️ Kocham w Tobie Twój spokój wypisany na twarzy 🌊 Kocham w Tobie po prostu całą Twoją urodę 🌏 ";
+    document.getElementById('wallOfLove').innerText = reasons.repeat(35);
+
+    let size = 20;
+    let index = -1; 
+    let takStep = 0;
+
+    const messages = [
+        "Naprawdę?", "Niunia proszę...", "Zastanów się jeszcze raz...", "Chyba się pomyliłaś? :(", 
+        "Serio mi to robisz?", "Bubu będzie smutny...", "Zabije sie", "Zabilem sie", 
+        "Tu duch Michała, kliknij TAK", "Jak coś to masz pół ekranu zielone", "Niunia, to już jest crazy"
+    ];
+
+    const gifSequence = [
+        "nadzieja (1).gif", "smutek (2).gif", "zły (3).gif", "placz (4).gif", "blaganie (5).gif",
+        "sad (7).gif", "dead (8).gif", "afterdead (9).gif", "duch (10).gif", "whatever (11).gif", "crazy (12).gif"
+    ];
+
+    const takBtn = document.getElementById('tak');
+    const nieBtn = document.getElementById('nie');
+    const mainGif = document.getElementById('mainGif');
+    const question = document.getElementById('question');
+    const subtext = document.getElementById('subtext');
+
+    nieBtn.onclick = function() {
+        index++;
+        if (index >= messages.length) index = 0;
+        question.innerHTML = messages[index];
+        mainGif.src = gifSequence[index];
+        size += 15;
+        takBtn.style.fontSize = size + 'px';
+        takBtn.style.padding = (size/1.5) + 'px ' + (size*1.5) + 'px';
+    };
+
+    takBtn.onclick = function() {
+        takStep++;
+        if (takStep === 1) {
+            question.innerHTML = "Na pewno? Przemyśl to jeszcze raz, bo nie przyjmuję reklamacji! 🧐";
+            takBtn.innerHTML = "NA 1000%!";
+            mainGif.src = "dwojga.gif";
+        } else if (takStep === 2) {
+            question.innerHTML = "Dobra... JAK COŚ TO JA TEŻ SIĘ ZGADZAM. ❤️ Miśka nie trzeba dwa razy pytać!";
+            takBtn.innerHTML = "NO I SUPER, DAWAJ FINAŁ!";
+            mainGif.src = "jotyz.gif";
+        } else {
+            mainGif.src = "start.gif";
+            question.innerHTML = "Wiedziałem, że nie będziesz mogła się oprzeć deszczowi misiów... Dziękuję, że jesteś moja skarbie📢📢!!!!";
+            nieBtn.style.display = 'none';
+            takBtn.style.display = 'none';
+            subtext.style.display = 'block';
+            setInterval(createFallingBubu, 100);
+        }
+    };
+
+    function createFallingBubu() {
+        const bubu = document.createElement('img');
+        // TWOJA NOWA LISTA GIFÓW KOŃCOWYCH
+        const imgs = ["end(1).gif", "end(2).gif", "end(3).gif"];
+        bubu.src = imgs[Math.floor(Math.random() * imgs.length)];
+        bubu.classList.add('falling-bubu');
+        bubu.style.left = Math.random() * 100 + "vw";
+        bubu.style.animationDuration = Math.random() * 2 + 2.5 + "s";
+        document.body.appendChild(bubu);
+        setTimeout(() => { bubu.remove(); }, 5000);
+    }
+</script>
+
+</body>
+</html>
